@@ -31,7 +31,7 @@ class Map extends React.Component {
   async componentDidMount() {
     var header = new Headers()
     header.set("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com")
-    header.set("x-rapidapi-key", "f87d8b7daemsh99560a3534f1f1ap14d466jsn01568a97fbdf")
+    header.set("x-rapidapi-key", "process.env.API_KEY")
     var count = 0
     var obj = {}
     var obj2 = {}

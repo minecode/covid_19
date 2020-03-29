@@ -53,7 +53,7 @@ class TotalState extends React.Component {
     async componentDidMount() {
         var header = new Headers()
         header.set("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com")
-        header.set("x-rapidapi-key", "f87d8b7daemsh99560a3534f1f1ap14d466jsn01568a97fbdf")
+        header.set("x-rapidapi-key", "process.env.API_KEY")
         fetch('https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php', {
                 method: 'GET',
                 headers: header
