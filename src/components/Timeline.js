@@ -82,7 +82,7 @@ class Timeline extends React.Component {
 		});
 		var header = new Headers();
 		header.set('x-rapidapi-host', 'coronavirus-monitor.p.rapidapi.com');
-		header.set('x-rapidapi-key', 'process.env.API_KEY');
+		header.set('x-rapidapi-key', process.env.API_KEY);
 
 		var countryData = {};
 		var countryName = event.target.value;
@@ -372,7 +372,7 @@ class Timeline extends React.Component {
 	async componentDidMount() {
 		var header = new Headers();
 		header.set('x-rapidapi-host', 'coronavirus-monitor.p.rapidapi.com');
-		header.set('x-rapidapi-key', 'process.env.API_KEY');
+		header.set('x-rapidapi-key', process.env.API_KEY);
 		fetch('https://coronavirus-monitor.p.rapidapi.com/coronavirus/affected.php', {
 			method: 'GET',
 			headers: header

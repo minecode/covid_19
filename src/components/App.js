@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 class App extends React.Component {
 	render() {
 		return (
-			<Router basename="/covid19">
+			<Router basename="/covid_19">
 				<div>
 					<main>
 						<Switch>
