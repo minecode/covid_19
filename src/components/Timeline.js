@@ -162,9 +162,6 @@ class Timeline extends React.Component {
 					return new Date(country.record_date).toLocaleDateString();
 				}).filter(this.onlyUnique);
 
-				if (countryName === 'Portugal')
-					console.log(countryData[countryName].options.xaxis.categories);
-
 				countryData[countryName].series[0].data = data3.stat_by_country.map(function (country) {
 					var temp = {
 						date: country.record_date.split(' ')[0],
@@ -173,9 +170,6 @@ class Timeline extends React.Component {
 					return temp;
 				});
 
-				if (countryName === 'Portugal')
-					console.log(countryData[countryName].series[0].data)
-
 				var out = Object.values(
 					countryData[countryName].series[0].data.reduce((c, e) => {
 						c[e.date] = e;
@@ -183,15 +177,9 @@ class Timeline extends React.Component {
 					}, {})
 				);
 
-				if (countryName === 'Portugal')
-					console.log(out);
-
 				countryData[countryName].series[0].data = out.map(function (obj) {
 					return obj.number;
 				});
-
-				if (countryName === 'Portugal')
-					console.log(countryData[countryName].series[0].data);
 
 				countryData[countryName].series[1].data = data3.stat_by_country.map(function (country) {
 					var temp = {
