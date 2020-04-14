@@ -80,6 +80,7 @@ class Map extends React.Component {
                         countryName = getCode(countryName)
 
                     if(countryName !== undefined) {
+			console.log(data2)
                         obj[countryName] = data2.latest_stat_by_country[0].total_cases
                         obj2[countryName] = {}
                         obj2[countryName]['total_cases'] = data2.latest_stat_by_country[0].total_cases
