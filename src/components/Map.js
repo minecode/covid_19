@@ -41,6 +41,7 @@ class Map extends React.Component {
         })
         .then(res1 => res1.json())
         .then(data1 => {
+	    console.log(data1)
             data1.affected_countries.forEach(countryName => {
                     fetch('https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country=' + countryName + '', {
                         method: 'GET',
