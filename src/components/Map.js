@@ -41,7 +41,6 @@ class Map extends React.Component {
         })
         .then(res1 => res1.json())
         .then(data1 => {
-	    console.log(data1)
             data1.affected_countries.forEach(countryName => {
                     fetch('https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country=' + countryName + '', {
                         method: 'GET',
@@ -49,57 +48,59 @@ class Map extends React.Component {
                     })
                 .then(res2 => res2.json())
                 .then(data2 => {
-                    if (countryName === 'USA')
-                        countryName = 'US'
-                    else if (countryName === 'UK')
-                        countryName = 'GB'
-                    else if (countryName === 'Russia')
-                        countryName = 'RU'
-                    else if (countryName === 'Iran')
-                        countryName = 'IR'
-                    else if (countryName === 'Vietnam')
-                        countryName = 'VN'
-                    else if (countryName === 'S. Korea')
-                        countryName = 'KR'
-                    else if (countryName === 'Venezuela')
-                        countryName = 'VE'
-                    else if (countryName === 'Bolivia')
-                        countryName = 'BO'
-                    else if (countryName === 'Taiwan')
-                        countryName = 'TW'
-                    else if (countryName === 'UAE')
-                        countryName = 'AE'
-                    else if (countryName === 'Moldova')
-                        countryName = 'MD'
-                    else if (countryName === 'Tanzania')
-                        countryName = 'TZ'
-                    else if (countryName === 'Syria')
-                        countryName = 'SY'
-                    else if (getCode(countryName) === undefined && getName(countryName) === undefined)
-                        console.log(countryName)
-                    else
-                        countryName = getCode(countryName)
+                     if (countryName == "") {
+			    if (countryName === 'USA')
+				countryName = 'US'
+			    else if (countryName === 'UK')
+				countryName = 'GB'
+			    else if (countryName === 'Russia')
+				countryName = 'RU'
+			    else if (countryName === 'Iran')
+				countryName = 'IR'
+			    else if (countryName === 'Vietnam')
+				countryName = 'VN'
+			    else if (countryName === 'S. Korea')
+				countryName = 'KR'
+			    else if (countryName === 'Venezuela')
+				countryName = 'VE'
+			    else if (countryName === 'Bolivia')
+				countryName = 'BO'
+			    else if (countryName === 'Taiwan')
+				countryName = 'TW'
+			    else if (countryName === 'UAE')
+				countryName = 'AE'
+			    else if (countryName === 'Moldova')
+				countryName = 'MD'
+			    else if (countryName === 'Tanzania')
+				countryName = 'TZ'
+			    else if (countryName === 'Syria')
+				countryName = 'SY'
+			    else if (getCode(countryName) === undefined && getName(countryName) === undefined)
+				console.log(countryName)
+			    else
+				countryName = getCode(countryName)
 
-                    if(countryName !== undefined) {
-			console.log(data2)
-                        obj[countryName] = data2.latest_stat_by_country[0].total_cases
-                        obj2[countryName] = {}
-                        obj2[countryName]['total_cases'] = data2.latest_stat_by_country[0].total_cases
-                        obj2[countryName]['new_cases'] = data2.latest_stat_by_country[0].new_cases
-                        obj2[countryName]['active_cases'] = data2.latest_stat_by_country[0].active_cases
-                        obj2[countryName]['total_deaths'] = data2.latest_stat_by_country[0].total_deaths
-                        obj2[countryName]['new_deaths'] = data2.latest_stat_by_country[0].new_deaths
-                        obj2[countryName]['total_recovered'] = data2.latest_stat_by_country[0].total_recovered
-                        obj2[countryName]['serious_critical'] = data2.latest_stat_by_country[0].serious_critical
-                    }
-                    count++
-                    if (count === data1.affected_countries.length) {
-                        this.setState({
-                            data: obj,
-                            data2: obj2,
-                            isActive: true
-                        });
-                    }
+			    if(countryName !== undefined) {
+				console.log(data2)
+				obj[countryName] = data2.latest_stat_by_country[0].total_cases
+				obj2[countryName] = {}
+				obj2[countryName]['total_cases'] = data2.latest_stat_by_country[0].total_cases
+				obj2[countryName]['new_cases'] = data2.latest_stat_by_country[0].new_cases
+				obj2[countryName]['active_cases'] = data2.latest_stat_by_country[0].active_cases
+				obj2[countryName]['total_deaths'] = data2.latest_stat_by_country[0].total_deaths
+				obj2[countryName]['new_deaths'] = data2.latest_stat_by_country[0].new_deaths
+				obj2[countryName]['total_recovered'] = data2.latest_stat_by_country[0].total_recovered
+				obj2[countryName]['serious_critical'] = data2.latest_stat_by_country[0].serious_critical
+			    }
+			    count++
+			    if (count === data1.affected_countries.length) {
+				this.setState({
+				    data: obj,
+				    data2: obj2,
+				    isActive: true
+				});
+			    }
+		     }
                 })
             })
         })
